@@ -1,0 +1,290 @@
+/* ------------------------------------------------------------------
+   Brand tokens
+
+   The teal is the brand colour from the logo. It's a little too light
+   for small text on white, so text and buttons use --teal-deep, and the
+   brighter teal is kept for large shapes like the bottle in the hero.
+------------------------------------------------------------------- */
+:root {
+  --teal: #229991;
+  --teal-deep: #136b66;
+  --teal-mint: #ddf1ee;
+  --pine: #0f2b29;
+  --pine-soft: #45605d;
+  --mist: #f2f7f6;
+  --paper: #ffffff;
+  --label: #fbfaf4;
+  --line: #d3e2df;
+  --error: #b42318;
+
+  --font-display: "Young Serif", Georgia, "Times New Roman", serif;
+  --font-body: "Hanken Grotesk Variable", "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-label: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* A modular scale (roughly 1.25), so sizes relate to each other */
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.3125rem;
+  --step-2: 1.75rem;
+  --step-3: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+  --step-4: clamp(2.5rem, 1.6rem + 3.6vw, 4.25rem);
+
+  --radius-sm: 10px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --nav-height: 72px;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --measure: 34rem;
+}
+
+/* ------------------------------------------------------------------
+   Base
+------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Keeps anchor jumps from hiding section headings under the sticky nav */
+  scroll-padding-top: calc(var(--nav-height) + 1rem);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--pine);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h3 {
+  font-family: var(--font-body);
+  font-size: var(--step-1);
+  font-weight: 650;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+img,
+iframe,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--teal-mint);
+  color: var(--pine);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Layout helpers
+------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: clamp(4rem, 3rem + 5vw, 7rem);
+}
+
+.section--mist {
+  background: var(--mist);
+}
+
+.section-heading {
+  max-width: 40rem;
+  margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.section-heading h2 {
+  font-size: var(--step-3);
+}
+
+.section-heading p {
+  max-width: var(--measure);
+  margin-top: 1rem;
+  color: var(--pine-soft);
+}
+
+/* Only visible when it has keyboard focus */
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-pill);
+  background: var(--pine);
+  color: var(--paper);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------------------------
+   Buttons
+------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 160ms var(--ease), border-color 160ms var(--ease),
+    color 160ms var(--ease);
+}
+
+.btn--primary {
+  background: var(--teal-deep);
+  color: var(--paper);
+}
+
+.btn--primary:hover {
+  background: var(--pine);
+}
+
+.btn--quiet {
+  border-color: var(--line);
+  background: var(--paper);
+  color: var(--pine);
+}
+
+.btn--quiet:hover {
+  border-color: var(--teal-deep);
+}
+
+.btn svg {
+  flex-shrink: 0;
+}
+
+/* Inline text links inside running copy */
+.text-link {
+  color: var(--teal-deep);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.text-link:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Shown by <ErrorBoundary> if the page crashes */
+.crash {
+  display: grid;
+  justify-items: start;
+  align-content: center;
+  gap: 1.25rem;
+  max-width: 40rem;
+  min-height: 100vh;
+  margin-inline: auto;
+  padding: var(--gutter);
+}
+
+.crash h1 {
+  font-size: var(--step-3);
+}
+
+.crash a {
+  color: var(--teal-deep);
+}
+
+/* <main> takes focus from the skip link; it doesn't need a ring for that */
+main:focus {
+  outline: none;
+}
+
+/* A quiet "more on this" link that closes off a section */
+.section-more {
+  margin-top: 2.5rem;
+}

@@ -1,0 +1,49 @@
+.steps {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.step {
+  position: relative;
+}
+
+.step__number {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 1.25rem;
+  border: 1.5px solid var(--teal-deep);
+  border-radius: 50%;
+  background: var(--paper);
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  color: var(--teal-deep);
+}
+
+.step p {
+  max-width: 22rem;
+  margin-top: 0.5rem;
+  color: var(--pine-soft);
+}
+
+.steps__cta {
+  margin-top: 3rem;
+}
+
+@media (min-width: 820px) {
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  /* A line running between the numbers, so it reads as one journey */
+  .step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 1.625rem;
+    left: 4.25rem;
+    right: 0;
+    border-top: 1.5px dashed rgb(19 107 102 / 0.35);
+  }
+}

@@ -1,0 +1,7 @@
+node_modules
+dist
+.DS_Store
+*.local
+
+# Real environment values stay out of git. .env.example shows what's needed.
+.env

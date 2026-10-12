@@ -1,0 +1,46 @@
+.promises {
+  background: var(--pine);
+  color: var(--paper);
+}
+
+.promises .section-heading p {
+  color: rgb(255 255 255 / 0.72);
+}
+
+.promises__grid {
+  display: grid;
+  gap: 2.5rem 3.5rem;
+}
+
+.promise {
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--teal);
+}
+
+.promise h3 {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+.promise p {
+  max-width: 30rem;
+  margin-top: 0.75rem;
+  color: rgb(255 255 255 / 0.72);
+}
+
+@media (min-width: 760px) {
+  .promises__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.promises__more {
+  border-color: rgb(255 255 255 / 0.35);
+  color: var(--paper);
+}
+
+.promises__more:hover {
+  border-color: var(--paper);
+}

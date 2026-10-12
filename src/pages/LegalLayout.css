@@ -1,0 +1,54 @@
+/* Kept to a comfortable reading width, lined up with the page title */
+.legal {
+  max-width: 46rem;
+  padding-block: clamp(2.5rem, 2rem + 3vw, 4.5rem) clamp(4rem, 3rem + 5vw, 7rem);
+}
+
+.legal__updated {
+  font-size: var(--step--1);
+}
+
+.legal__contents {
+  margin-bottom: 3rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: var(--radius-lg);
+  background: var(--mist);
+}
+
+.legal__contents ol {
+  display: grid;
+  gap: 0.375rem;
+  padding-left: 1.25rem;
+  list-style: decimal;
+}
+
+.legal__contents a {
+  color: var(--teal-deep);
+  text-underline-offset: 3px;
+}
+
+.legal__section + .legal__section {
+  margin-top: 2.75rem;
+}
+
+.legal__section h2 {
+  margin-bottom: 1rem;
+  font-size: var(--step-2);
+}
+
+.legal__section p + p,
+.legal__section p + ul,
+.legal__section ul + p {
+  margin-top: 0.875rem;
+}
+
+.legal__section ul {
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.legal__section li::marker {
+  color: var(--teal);
+}

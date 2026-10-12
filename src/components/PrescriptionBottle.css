@@ -1,0 +1,211 @@
+/* Everything in the scene is sized in em, so the whole illustration
+   scales from one font-size instead of a pile of breakpoints. */
+.bottle-scene {
+  --shelf: var(--pine);
+  position: relative;
+  display: grid;
+  place-items: end center;
+  width: 27em;
+  max-width: 100%;
+  padding: 3.5em 0 3.25em;
+  border-radius: var(--radius-lg);
+  background: var(--teal-mint);
+  font-size: clamp(11px, 3.4vw, 16px);
+}
+
+/* The shelf the bottle stands on */
+.bottle-scene::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 2.75em;
+  left: 0;
+  height: 0.5em;
+  background: var(--shelf);
+}
+
+.bottle {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 18.5em;
+  transform: rotate(-2.5deg);
+  transform-origin: bottom center;
+  animation: bottle-in 700ms var(--ease) both;
+}
+
+.bottle__cap {
+  width: 100%;
+  height: 3.5em;
+  border-radius: 0.75em 0.75em 0.375em 0.375em;
+  /* Ridges you'd grip to twist the cap off */
+  background: repeating-linear-gradient(90deg, #173d3a 0 0.4em, var(--pine) 0.4em 0.75em);
+}
+
+.bottle__neck {
+  width: 92%;
+  height: 0.9em;
+  background: #1b7f78;
+}
+
+.bottle__body {
+  position: relative;
+  width: 94%;
+  padding: 2.25em 1em 2.5em;
+  border-radius: 0.375em 0.375em 1.75em 1.75em;
+  background: var(--teal);
+  overflow: hidden;
+}
+
+/* Light catching the side of the plastic */
+.bottle__body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 7%;
+  width: 0.9em;
+  border-radius: 1em;
+  background: rgb(255 255 255 / 0.22);
+}
+
+.rx-label {
+  position: relative;
+  padding: 1em 1.1em 0.9em;
+  border-radius: 0.25em;
+  background: var(--label);
+  box-shadow: 0 0.1em 0 rgb(0 0 0 / 0.12);
+  color: var(--pine);
+  font-family: var(--font-label);
+  font-size: 0.72em;
+  line-height: 1.45;
+  animation: label-print 650ms var(--ease) 380ms both;
+}
+
+.rx-label__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 0.7em;
+  border-bottom: 1px dashed rgb(15 43 41 / 0.4);
+}
+
+.rx-label__shop {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.rx-label__shop small {
+  font-size: 0.9em;
+  font-weight: 400;
+  letter-spacing: 0;
+  opacity: 0.75;
+}
+
+.rx-label__rx {
+  font-family: var(--font-display);
+  font-size: 2.4em;
+  line-height: 0.8;
+  color: var(--teal-deep);
+}
+
+.rx-label__lines {
+  display: grid;
+  gap: 0.45em;
+  padding-block: 0.8em;
+  border-bottom: 1px dashed rgb(15 43 41 / 0.4);
+}
+
+.rx-label__lines div {
+  display: grid;
+  grid-template-columns: 6.4em 1fr;
+  gap: 0.5em;
+}
+
+.rx-label__lines dt {
+  opacity: 0.65;
+}
+
+.rx-label__foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  padding-top: 0.7em;
+  font-size: 0.86em;
+}
+
+.rx-label__foot span:first-child {
+  white-space: nowrap;
+  font-weight: 500;
+  color: var(--teal-deep);
+}
+
+.rx-label__foot span:last-child {
+  text-align: right;
+  opacity: 0.65;
+}
+
+/* Loose medicine on the shelf */
+.capsule,
+.tablet {
+  position: absolute;
+  z-index: 2;
+  animation: scatter-in 500ms var(--ease) 650ms both;
+}
+
+.capsule {
+  width: 4em;
+  height: 1.5em;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--teal-deep) 50%, var(--paper) 50%);
+  box-shadow: inset 0 0 0 1px rgb(15 43 41 / 0.12);
+}
+
+.capsule--one {
+  right: 4%;
+  bottom: 3.25em;
+  transform: rotate(-8deg);
+}
+
+.capsule--two {
+  right: 7%;
+  bottom: 4.9em;
+  transform: rotate(24deg);
+}
+
+.tablet {
+  left: 7%;
+  bottom: 3.25em;
+  width: 2.1em;
+  height: 1.1em;
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: inset 0 -0.2em 0 rgb(15 43 41 / 0.12);
+}
+
+@keyframes bottle-in {
+  from {
+    opacity: 0;
+    transform: translateY(1.5em) rotate(0deg);
+  }
+}
+
+/* Feeds out from the top, like a label printer */
+@keyframes label-print {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes scatter-in {
+  from {
+    opacity: 0;
+  }
+}

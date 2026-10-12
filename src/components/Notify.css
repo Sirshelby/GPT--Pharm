@@ -1,0 +1,137 @@
+.notify {
+  background: var(--teal-deep);
+  color: var(--paper);
+}
+
+.notify__layout {
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.notify__copy h2 {
+  max-width: 16ch;
+  font-size: var(--step-3);
+}
+
+.notify__copy p {
+  max-width: var(--measure);
+  margin-top: 1rem;
+  color: rgb(255 255 255 / 0.82);
+}
+
+/* ------------------------------------------------------------------
+   Sign-up form (white card on the teal band)
+------------------------------------------------------------------- */
+.signup {
+  display: grid;
+  gap: 1.25rem;
+  padding: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  color: var(--pine);
+}
+
+.signup__field {
+  display: grid;
+  gap: 0.375rem;
+}
+
+.signup__field label {
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.signup__field input {
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  font-size: 1rem; /* 16px stops iOS zooming in on focus */
+  transition: border-color 160ms var(--ease);
+}
+
+.signup__field input:hover {
+  border-color: #b5cbc7;
+}
+
+.signup__field input:focus {
+  border-color: var(--teal-deep);
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(34 153 145 / 0.25);
+}
+
+.signup__field input[aria-invalid="true"] {
+  border-color: var(--error);
+}
+
+.signup__error {
+  font-size: var(--step--1);
+  font-weight: 500;
+  color: var(--error);
+}
+
+.signup__error--form {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  background: #fdf0ef;
+}
+
+.signup__button {
+  width: 100%;
+  min-height: 3.25rem;
+  margin-top: 0.25rem;
+}
+
+.signup__button:disabled {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+.signup__fineprint {
+  font-size: var(--step--1);
+  color: var(--pine-soft);
+}
+
+.signup__trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.signup--done {
+  justify-items: start;
+  gap: 0.5rem;
+}
+
+.signup__tick {
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 0.5rem;
+  border-radius: 50%;
+  background: var(--teal-mint);
+  color: var(--teal-deep);
+}
+
+.signup__done-title {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1.15;
+}
+
+.signup__done-text {
+  color: var(--pine-soft);
+}
+
+@media (min-width: 900px) {
+  .notify__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    gap: 5rem;
+  }
+}
